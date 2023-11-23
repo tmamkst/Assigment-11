@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <form @submit.prevent="submitForm" style="display: flex; flex-direction: column; gap: 10px; width: 200px;">
+            <label for="username">Username:</label>
+            <input type="text" id="username" v-model="username" required>
+            <span v-if="!username">Username is necessary.</span>
+      
+            <label for="email">Email:</label>
+            <input type="email" id="email" v-model="email" required>
+            <span v-if="!email">Email is necessary.</span>
+        
+            <label for="password">Password:</label>
+            <input type="password" id="password" v-model="password" minlength="8" required>
+            <span v-if="password.length < 8">You must have a minimum of 8 characters.</span>
+        
+            <button type="submit" :disabled="!isValidForm">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                username: '',
+                email: '',
+                password: ''
+            },
+            computed: {
+                isValidForm: function () {
+                    return this.username && this.email && this.password.length >= 8;
+                }
+            },
+            methods: {
+                submitForm: function () {
+                    alert('Well Done');
+                    this.username = '';
+                    this.email = '';
+                    this.password = '';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

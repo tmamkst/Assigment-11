@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <ul>
+            <li v-for="fruit of fruits">{{ fruit }}</li>
+        </ul>
+        <button @click="addFruit">Add</button>
+        <button @click="deleteFruit">Delete</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                fruits: ['orange', 'pineapple', 'kiwi']
+            },
+            methods: {
+                addFruit: function () {
+                    this.fruits.push('Your fruit');
+                },
+                deleteFruit: function () {
+                    this.fruits.pop();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

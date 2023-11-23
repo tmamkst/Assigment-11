@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"> </script>
+</head>
+<body>
+    <div id="app">
+        <label for="username">Username:</label>
+        <input type="text" id="username" v-model="username">
+        <p>{{ greet }}</p>
+        <button @click="setDefault">Set Default Username</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                username: '',
+                greet: ''
+            },
+            methods: {
+                setDefault: function () {
+                    this.username = 'Temirlan'
+                }
+            },
+            watch: {
+                username: function () {
+                    this.greet = 'Hello ' + this.username;
+                }
+            }
+        });
+    </script>    
+</body>
+</html>
